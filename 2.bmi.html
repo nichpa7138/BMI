@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สื่อการเรียนรู้: สร้างระบบคำนวณ BMI ด้วย AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Prompt', sans-serif; scroll-behavior: smooth; }
+        .hide-arrows::-webkit-outer-spin-button,
+        .hide-arrows::-webkit-inner-spin-button {
+            -webkit-appearance: none; margin: 0;
+        }
+        .hide-arrows { -moz-appearance: textfield; }
+        .gradient-text {
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="font-bold text-xl text-orange-600 flex items-center gap-2">
+                <i class="fa-solid fa-laptop-code"></i> เรียนรู้การสร้าง Web App คำนวณ BMI
+ด้วยผู้ช่วย AI
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#analysis" class="hover:text-orange-600 transition">1. วิเคราะห์ระบบ</a>
+                <a href="#prompt" class="hover:text-orange-600 transition">2. เขียน Prompt</a>
+                <a href="#demo" class="hover:text-orange-600 transition">3. ตัวอย่างระบบ</a>
+                <a href="#github" class="hover:text-orange-600 transition">4. อัพโหลดขึ้น GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-6xl mx-auto px-4 py-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            เรียนรู้การสร้าง <span class="bg-gradient-to-r from-orange-500 to-red-500 gradient-text">Web App คำนวณ BMI</span><br>ด้วยผู้ช่วย AI 
+        </h1>
+        <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-8">
+            บทเรียนนี้จะพานักศึกษาทำความเข้าใจตั้งแต่การวิเคราะห์โครงสร้างโปรแกรม (IPO) การเขียน Prompt สั่งงาน AI 
+            ไปจนถึงการนำเว็บไซต์ขึ้นออนไลน์ด้วย GitHub Pages
+        </p>
+        <a href="#analysis" class="inline-block bg-orange-600 text-white font-medium px-8 py-3 rounded-full shadow-lg hover:bg-orange-700 hover:shadow-xl transition-all transform hover:-translate-y-1">
+            เริ่มบทเรียนกันเลย <i class="fa-solid fa-arrow-down ml-2"></i>
+        </a>
+    </header>
+
+    <!-- Section 1: System Analysis -->
+    <section id="analysis" class="max-w-6xl mx-auto px-4 py-12">
+        <div class="mb-10 text-center">
+            <span class="text-orange-600 font-semibold text-sm tracking-wider uppercase mb-2 block">Step 1</span>
+            <h2 class="text-3xl font-bold">การวิเคราะห์ระบบ (System Analysis)</h2>
+            <p class="text-slate-500 mt-2">ก่อนเขียนโปรแกรม เราต้องวิเคราะห์โครงสร้าง IPO (Input - Process - Output)</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Input -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+                <div class="absolute top-0 right-0 bg-blue-100 text-blue-600 w-16 h-16 rounded-bl-full flex items-start justify-end p-4 font-bold text-xl">I</div>
+                <h3 class="text-xl font-bold text-blue-600 mb-4 flex items-center gap-2"><i class="fa-solid fa-keyboard"></i> 1. Input</h3>
+                <p class="text-slate-600 mb-2">ข้อมูลที่ต้องรับเข้าจากผู้ใช้:</p>
+                <ul class="space-y-2 text-sm text-slate-700 bg-blue-50/50 p-4 rounded-xl">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> <b>น้ำหนัก:</b> กิโลกรัม (kg)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i> <b>ส่วนสูง:</b> เซนติเมตร (cm)</li>
+                </ul>
+            </div>
+
+            <!-- Process -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+                <div class="absolute top-0 right-0 bg-orange-100 text-orange-600 w-16 h-16 rounded-bl-full flex items-start justify-end p-4 font-bold text-xl">P</div>
+                <h3 class="text-xl font-bold text-orange-600 mb-4 flex items-center gap-2"><i class="fa-solid fa-microchip"></i> 2. Process</h3>
+                <p class="text-slate-600 mb-2">ขั้นตอนประมวลผล:</p>
+                <div class="space-y-3 text-sm text-slate-700 bg-orange-50/50 p-4 rounded-xl">
+                    <p>1. แปลงส่วนสูงให้เป็น "เมตร" (หาร 100)</p>
+                    <p class="font-bold text-orange-700 bg-orange-100 p-2 rounded">สูตร: BMI = น้ำหนัก / (ส่วนสูง)²</p>
+                    <p>2. เปรียบเทียบเกณฑ์คนเอเชีย:</p>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li>&lt; 18.5 : น้ำหนักน้อย</li>
+                        <li>18.5 - 22.9 : ปกติ (สุขภาพดี)</li>
+                        <li>23.0 - 24.9 : ท้วม/ระดับ 1</li>
+                        <li>25.0 - 29.9 : อ้วน/ระดับ 2</li>
+                        <li>&gt;= 30.0 : อ้วนมาก/ระดับ 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Output -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+                <div class="absolute top-0 right-0 bg-green-100 text-green-600 w-16 h-16 rounded-bl-full flex items-start justify-end p-4 font-bold text-xl">O</div>
+                <h3 class="text-xl font-bold text-green-600 mb-4 flex items-center gap-2"><i class="fa-solid fa-desktop"></i> 3. Output</h3>
+                <p class="text-slate-600 mb-2">สิ่งที่ระบบต้องแสดงผล:</p>
+                <ul class="space-y-3 text-sm text-slate-700 bg-green-50/50 p-4 rounded-xl">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-caret-right text-green-500 mt-1"></i> <b>ตัวเลข BMI:</b> เช่น 24.2</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-caret-right text-green-500 mt-1"></i> <b>ผลการประเมิน:</b> ท้วม / โรคอ้วนระดับ 1</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-caret-right text-green-500 mt-1"></i> <b>คำแนะนำ:</b> ควรควบคุมอาหาร...</li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-caret-right text-green-500 mt-1"></i> <b>Extra:</b> ปุ่มคำนวณใหม่ และรูปภาพ/Emoji ตามผลลัพธ์</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Prompt Writing -->
+    <section id="prompt" class="bg-slate-100/50 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-10 text-center">
+                <span class="text-purple-600 font-semibold text-sm tracking-wider uppercase mb-2 block">Step 2</span>
+                <h2 class="text-3xl font-bold">เทคนิคการเขียน Prompt สั่งงาน AI</h2>
+                <p class="text-slate-500 mt-2">นำข้อมูลจากการวิเคราะห์ระบบมารวบรวมเป็นคำสั่งที่ชัดเจน เพื่อให้ AI เขียนโค้ดให้</p>
+            </div>
+
+            <div class="bg-slate-800 rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="bg-slate-900 px-4 py-3 flex items-center gap-2 border-b border-slate-700">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span class="text-slate-400 text-xs ml-2 font-mono">Prompt_For_AI.txt</span>
+                </div>
+                <div class="p-6 text-slate-300 font-mono text-sm leading-relaxed whitespace-pre-wrap">คุณคือผู้เชี่ยวชาญการเขียน Web App ขอให้ช่วยเขียนโค้ดไฟล์ index.html สร้างระบบคำนวณค่า BMI (ดัชนีมวลกาย) สำหรับคนเอเชีย โดยใช้ Tailwind CSS ออกแบบให้สวยงาม ใช้งานง่าย โทนสีสดใส
+
+ข้อกำหนดระบบ (IPO):
+1. Input: รับค่าน้ำหนัก (กิโลกรัม) และ ส่วนสูง (เซนติเมตร)
+2. Process: แปลงส่วนสูงเป็นเมตร แล้วคำนวณ BMI = น้ำหนัก / (ส่วนสูง)²
+   เกณฑ์เปรียบเทียบ:
+   - < 18.5 : น้ำหนักน้อย
+   - 18.5 - 22.9 : ปกติ (สุขภาพดี)
+   - 23.0 - 24.9 : ท้วม / โรคอ้วนระดับ 1
+   - 25.0 - 29.9 : อ้วน / โรคอ้วนระดับ 2
+   - >= 30.0 : อ้วนมาก / โรคอ้วนระดับ 3
+3. Output: แสดงตัวเลข BMI, ผลการประเมิน, คำแนะนำที่เหมาะสม, และแสดงภาพ Emoji ให้เหมาะสมกับผลลัพธ์
+4. เพิ่มเติม: มีปุ่มให้กด "คำนวณใหม่" ด้วย</div>
+                <div class="bg-slate-900 px-6 py-3 flex justify-end">
+                    <button onclick="copyPrompt()" class="text-white text-sm bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition flex items-center gap-2">
+                        <i class="fa-regular fa-copy"></i> คัดลอก Prompt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Live Application Demo -->
+    <section id="demo" class="max-w-6xl mx-auto px-4 py-16">
+        <div class="mb-10 text-center">
+            <span class="text-teal-600 font-semibold text-sm tracking-wider uppercase mb-2 block">Step 3</span>
+            <h2 class="text-3xl font-bold">ตัวอย่างผลลัพธ์จาก AI (Live Demo)</h2>
+            <p class="text-slate-500 mt-2">นี่คือ Web App ที่ได้จาก Prompt ด้านบน นักศึกษาสามารถทดลองใช้งานได้จริง</p>
+        </div>
+
+        <!-- BMI Calculator App Container -->
+        <div class="bg-orange-50 rounded-[2.5rem] shadow-inner p-4 md:p-12 max-w-3xl mx-auto border border-orange-100 flex justify-center items-center">
+            
+            <div class="bg-white rounded-3xl shadow-xl w-full max-w-md p-8 border-t-8 border-orange-500">
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-bold text-orange-600">คำนวณค่า BMI</h1>
+                    <p class="text-gray-500 text-sm mt-1">มาตรฐานคนเอเชีย</p>
+                </div>
+
+                <!-- App Input -->
+                <div id="bmiInputForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">น้ำหนัก (กิโลกรัม)</label>
+                        <input type="number" id="appWeight" placeholder="เช่น 65" 
+                            class="hide-arrows w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-400 outline-none bg-orange-50/50 transition text-center text-lg font-medium">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">ส่วนสูง (เซนติเมตร)</label>
+                        <input type="number" id="appHeight" placeholder="เช่น 170" 
+                            class="hide-arrows w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-400 outline-none bg-orange-50/50 transition text-center text-lg font-medium">
+                    </div>
+                    
+                    <div id="appError" class="hidden text-red-500 text-sm text-center bg-red-50 py-2 rounded-lg">
+                        กรุณากรอกข้อมูลให้ครบถ้วนและมากกว่า 0
+                    </div>
+
+                    <button onclick="runBMIApp()" 
+                        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3.5 rounded-xl shadow-md transition-all text-lg mt-2">
+                        คำนวณผลลัพธ์
+                    </button>
+                </div>
+
+                <!-- App Result (Hidden initially) -->
+                <div id="bmiResultForm" class="hidden space-y-4 animate-fade-in text-center">
+                    <div id="appEmoji" class="text-6xl mb-2 drop-shadow-md"></div>
+                    <div class="text-sm text-gray-500">ค่า BMI ของคุณ</div>
+                    <div id="appValue" class="text-5xl font-bold text-gray-800 mb-2">0.00</div>
+                    
+                    <div id="appCategory" class="text-lg font-bold px-4 py-1.5 inline-block rounded-full mb-3"></div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-xl border text-sm text-gray-600 mt-2 text-left">
+                        <span class="font-bold text-gray-700"><i class="fa-solid fa-lightbulb text-yellow-500"></i> คำแนะนำ:</span>
+                        <span id="appAdvice"></span>
+                    </div>
+
+                    <button onclick="resetBMIApp()" 
+                        class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-3 rounded-xl transition-colors mt-4 border">
+                        คำนวณใหม่อีกครั้ง
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: GitHub Deployment Guide -->
+    <section id="github" class="bg-slate-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-12 text-center">
+                <span class="text-blue-400 font-semibold text-sm tracking-wider uppercase mb-2 block">Step 4</span>
+                <h2 class="text-3xl font-bold mb-4">วิธีนำเว็บไซต์ขึ้นออนไลน์ด้วย GitHub Pages</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">เรียนรู้วิธีแปลงไฟล์ index.html ที่สร้างขึ้น ให้กลายเป็นเว็บไซต์จริงที่ทุกคนสามารถเข้าถึงได้ฟรีผ่านอินเทอร์เน็ต</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center text-xl mb-4">1</div>
+                    <h3 class="font-bold text-lg mb-2">สมัครสมาชิก GitHub</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        เข้าไปที่ <a href="https://github.com" target="_blank" class="text-blue-400 hover:underline">github.com</a> และทำการ Sign Up ให้เรียบร้อย ยืนยันอีเมลเพื่อเปิดใช้งานบัญชี
+                    </p>
+                    <i class="fa-brands fa-github text-4xl text-slate-600"></i>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center text-xl mb-4">2</div>
+                    <h3 class="font-bold text-lg mb-2">สร้าง Repository ใหม่</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        กดปุ่ม <b>"New"</b> เพื่อสร้าง Repository ตั้งชื่อโปรเจกต์ เช่น <code>bmi-calculator</code> และตั้งค่าเป็น <b>Public</b>
+                    </p>
+                    <i class="fa-solid fa-folder-plus text-4xl text-slate-600"></i>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-orange-500/20 text-orange-400 rounded-full flex items-center justify-center text-xl mb-4">3</div>
+                    <h3 class="font-bold text-lg mb-2">อัพโหลดไฟล์ HTML</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        คลิก <b>"uploading an existing file"</b> ลากไฟล์ <code>index.html</code> ของเรามาวาง แล้วกด <b>Commit changes</b>
+                    </p>
+                    <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-600"></i>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-xl mb-4">4</div>
+                    <h3 class="font-bold text-lg mb-2">เปิดใช้งาน Pages</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        ไปที่แท็บ <b>Settings > Pages</b> ตรง Source เลือก <b>"main"</b> branch แล้วกด Save รอ 1-2 นาทีจะได้ลิงก์เว็บไซต์ใช้งานได้เลย!
+                    </p>
+                    <i class="fa-solid fa-globe text-4xl text-slate-600"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-500 text-center py-6 text-sm">
+        <p></p>
+    </footer>
+
+    <script>
+        // ฟังก์ชันสำหรับ Copy ข้อความ Prompt
+        function copyPrompt() {
+            const promptText = `คุณคือผู้เชี่ยวชาญการเขียน Web App ขอให้ช่วยเขียนโค้ดไฟล์ index.html สร้างระบบคำนวณค่า BMI (ดัชนีมวลกาย) สำหรับคนเอเชีย โดยใช้ Tailwind CSS ออกแบบให้สวยงาม ใช้งานง่าย โทนสีสดใส
+
+ข้อกำหนดระบบ (IPO):
+1. Input: รับค่าน้ำหนัก (กิโลกรัม) และ ส่วนสูง (เซนติเมตร)
+2. Process: แปลงส่วนสูงเป็นเมตร แล้วคำนวณ BMI = น้ำหนัก / (ส่วนสูง)²
+   เกณฑ์เปรียบเทียบ:
+   - < 18.5 : น้ำหนักน้อย
+   - 18.5 - 22.9 : ปกติ (สุขภาพดี)
+   - 23.0 - 24.9 : ท้วม / โรคอ้วนระดับ 1
+   - 25.0 - 29.9 : อ้วน / โรคอ้วนระดับ 2
+   - >= 30.0 : อ้วนมาก / โรคอ้วนระดับ 3
+3. Output: แสดงตัวเลข BMI, ผลการประเมิน, คำแนะนำที่เหมาะสม, และแสดงภาพ Emoji ให้เหมาะสมกับผลลัพธ์
+4. เพิ่มเติม: มีปุ่มให้กด "คำนวณใหม่" ด้วย`;
+            
+            navigator.clipboard.writeText(promptText).then(() => {
+                alert("คัดลอก Prompt แล้ว! นำไปวางให้ AI ช่วยเขียนโค้ดได้เลย");
+            });
+        }
+
+        // ฟังก์ชันระบบคำนวณ BMI ในส่วน Demo
+        function runBMIApp() {
+            const w = parseFloat(document.getElementById('appWeight').value);
+            const h = parseFloat(document.getElementById('appHeight').value);
+            const error = document.getElementById('appError');
+            const inputForm = document.getElementById('bmiInputForm');
+            const resultForm = document.getElementById('bmiResultForm');
+
+            // ตรวจสอบ Input
+            if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) {
+                error.classList.remove('hidden');
+                return;
+            }
+            error.classList.add('hidden');
+
+            // Process: คำนวณสูตร
+            const hMeter = h / 100;
+            const bmi = (w / (hMeter * hMeter)).toFixed(2);
+            
+            let category, advice, colors, emoji;
+
+            // Process: เปรียบเทียบเกณฑ์
+            if (bmi < 18.5) {
+                category = 'น้ำหนักน้อย';
+                advice = 'ควรรับประทานอาหารที่ให้พลังงานและสารอาหารเพียงพอ รวมถึงออกกำลังกายเพื่อเพิ่มมวลกล้ามเนื้อ';
+                colors = 'bg-blue-100 text-blue-700';
+                emoji = '🍃';
+            } else if (bmi >= 18.5 && bmi <= 22.9) {
+                category = 'ปกติ (สุขภาพดี)';
+                advice = 'สุขภาพดีมาก! ควรดูแลน้ำหนักให้อยู่ในเกณฑ์นี้ต่อไป ด้วยการทานอาหารครบ 5 หมู่และออกกำลังกายสม่ำเสมอ';
+                colors = 'bg-green-100 text-green-700';
+                emoji = '✨';
+            } else if (bmi >= 23.0 && bmi <= 24.9) {
+                category = 'ท้วม / โรคอ้วนระดับ 1';
+                advice = 'เริ่มมีน้ำหนักเกินเกณฑ์ ควรควบคุมอาหารประเภทแป้ง ไขมัน ของหวาน และเพิ่มการออกกำลังกาย';
+                colors = 'bg-yellow-100 text-yellow-700';
+                emoji = '⚠️';
+            } else if (bmi >= 25.0 && bmi <= 29.9) {
+                category = 'อ้วน / โรคอ้วนระดับ 2';
+                advice = 'ควรปรับเปลี่ยนพฤติกรรมการกินอย่างจริงจัง ควบคุมแคลอรี่ และออกกำลังกายเป็นประจำเพื่อลดความเสี่ยงโรคภัย';
+                colors = 'bg-orange-100 text-orange-700';
+                emoji = '🍔';
+            } else {
+                category = 'อ้วนมาก / โรคอ้วนระดับ 3';
+                advice = 'มีความเสี่ยงต่อโรคแทรกซ้อนสูง ควรปรึกษาแพทย์หรือนักโภชนาการเพื่อหาแนวทางลดน้ำหนักอย่างถูกวิธีและปลอดภัย';
+                colors = 'bg-red-100 text-red-700';
+                emoji = '🚨';
+            }
+
+            // Output: แสดงผล
+            document.getElementById('appValue').innerText = bmi;
+            
+            const catEl = document.getElementById('appCategory');
+            catEl.innerText = category;
+            catEl.className = `text-lg font-bold px-5 py-2 inline-block rounded-full mb-3 ${colors}`;
+            
+            document.getElementById('appAdvice').innerText = advice;
+            document.getElementById('appEmoji').innerText = emoji;
+
+            inputForm.classList.add('hidden');
+            resultForm.classList.remove('hidden');
+        }
+
+        // ฟังก์ชัน Reset ของแอป Demo
+        function resetBMIApp() {
+            document.getElementById('appWeight').value = '';
+            document.getElementById('appHeight').value = '';
+            document.getElementById('bmiResultForm').classList.add('hidden');
+            document.getElementById('bmiInputForm').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
