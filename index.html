@@ -251,13 +251,9 @@
                     <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-xl mb-4">4</div>
                     <h3 class="font-bold text-lg mb-2">เปิดใช้งาน Pages</h3>
                     <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        <b>ให้ลบโค้ดเก่าออกทั้งหมด แล้วก๊อปปี้โค้ดด้านล่างนี้ไปวางแทน:</b>  <b></b> function doGet() {
-  return HtmlService.createHtmlOutputFromFile('Index')
-      .setTitle('ชื่อหัวข้อเว็บไซต์ของคุณ')
-      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-}
-
-                    </p>
+                        <b>ให้ลบโค้ดเก่าออกทั้งหมด แล้วก๊อปปี้โค้ดด้านล่างนี้ไปวางแทน:</b>  <b>function doGet()</b>  <b>{
+  return HtmlService.createHtmlOutputFromFile('Index')</b><b>.setTitle('ชื่อหัวข้อเว็บไซต์ของคุณ')</b><b>.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);}</b>
+                          </p>
                     <i class="fa-solid fa-globe text-4xl text-slate-600"></i>
                 </div>
             </div>
