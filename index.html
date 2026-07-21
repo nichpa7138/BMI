@@ -206,7 +206,64 @@
         </div>
     </section>
 
-    <!-- Section 4: GitHub Deployment Guide -->
+    <!-- Section 5: การใช้ Google Apps Script เป็น Host สำหรับไฟล์ HTML -->
+    <section id="github" class="bg-slate-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-12 text-center">
+                <span class="text-blue-400 font-semibold text-sm tracking-wider uppercase mb-2 block">Step 4</span>
+                <h2 class="text-3xl font-bold mb-4">วิธีนำเว็บไซต์ขึ้นออนไลน์ด้วย Google Apps Script</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">เรียนรู้วิธีแปลงไฟล์ index.html ที่สร้างขึ้น ให้กลายเป็นเว็บไซต์จริงที่ทุกคนสามารถเข้าถึงได้ฟรีผ่านอินเทอร์เน็ต</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center text-xl mb-4">1</div>
+                    <h3 class="font-bold text-lg mb-2">ล็อกอินด้วย Gmail ของคุณ </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                       ไปที่เว็บไซต์ <a href="https://script.google.com/" target="_blank" class="text-blue-400 hover:underline">google.com </a> แล้วล็อกอินด้วย Gmail ของคุณ 
+                    </p>
+                    <i class="fa-brands fa-github text-4xl text-slate-600"></i>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-full flex items-center justify-center text-xl mb-4">2</div>
+                    <h3 class="font-bold text-lg mb-2">สร้างโปรเจกต์ Apps Script</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        คลิกปุ่ม <b>"โปรเจกต์ใหม่" (New Project) ที่มุมซ้ายบน"</b><code>bmi-calculator</code>  <b></b>
+                    </p>
+                    <i class="fa-solid fa-folder-plus text-4xl text-slate-600"></i>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-orange-500/20 text-orange-400 rounded-full flex items-center justify-center text-xl mb-4">3</div>
+                    <h3 class="font-bold text-lg mb-2">เขียนโค้ดรันหน้าเว็บ (สั่งให้เปิด HTML)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        <b>"ในหน้าต่างโค้ด คุณจะเห็นไฟล์ชื่อ รหัส.gs (หรือ Code.gs)"</b> <code></code> <b></b>
+                    </p>
+                    <i class="fa-solid fa-cloud-arrow-up text-4xl text-slate-600"></i>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-xl mb-4">4</div>
+                    <h3 class="font-bold text-lg mb-2">เปิดใช้งาน Pages</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        <b>ให้ลบโค้ดเก่าออกทั้งหมด แล้วก๊อปปี้โค้ดด้านล่างนี้ไปวางแทน:</b>  <b></b> function doGet() {
+  return HtmlService.createHtmlOutputFromFile('Index')
+      .setTitle('ชื่อหัวข้อเว็บไซต์ของคุณ')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+                    </p>
+                    <i class="fa-solid fa-globe text-4xl text-slate-600"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- Section 4: GitHub Deployment Guide -->
     <section id="github" class="bg-slate-900 text-white py-16">
         <div class="max-w-6xl mx-auto px-4">
             <div class="mb-12 text-center">
@@ -258,7 +315,6 @@
             </div>
         </div>
     </section>
-
     <footer class="bg-slate-950 text-slate-500 text-center py-6 text-sm">
         <p></p>
     </footer>
